@@ -2,7 +2,7 @@ package highscorekit.hash.hash3_위장;
 
 import java.util.HashMap;
 
-public class Solution {
+public class Solution1 {
 
 	public static int solution(String[][] clothes) {
         
