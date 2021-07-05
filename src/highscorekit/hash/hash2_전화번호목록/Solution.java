@@ -1,4 +1,4 @@
-package highscorekit.hash.전화번호목록;
+package highscorekit.hash.hash2_전화번호목록;
 
 import java.util.Arrays;
 
