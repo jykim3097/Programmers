@@ -29,13 +29,13 @@
 * 출처 : 이것이 자바다, 한빛미디어
 * 배열을 포함한 컬렉션의 저장 요소를 하나씩 참조해서 람다식으로 처리할 수 있도록 해주는 반복자
 	* 람다식 : 함수적 스타일
-	* [StreamEx1]()
+	* [StreamEx1](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/hash/hash3_%EC%9C%84%EC%9E%A5/StreamEx1.java)
 * Stream의 foreach
 	* **Consumer 함수적 인터페이스** 타입의 매개값을 가진다
 	* 매개 값은 있지만 리턴 은 없다
 * 특징
 	* 람다식으로 요소를 처리한다
-		* [StreamEx2]()
+		* [StreamEx2](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/hash/hash3_%EC%9C%84%EC%9E%A5/StreamEx2.java)
 	* 내부 반복자를 사용해 *병렬 처리*가 쉽다
 		* 외부 반복자 : index를 이용하는 for문이나 Iterator를 이용하는 while문
 		* 내부 반복자 : 컬렉션 내부에서 요소를 반복시키고, 개발자는 처리해야할 코드만 제공하는 코드 패턴
@@ -45,5 +45,5 @@
 	* 중간, 최종 처리 작업을 수행한다
 		* 중간 처리에서는 매핑, 필터링, 정렬 수행
 		* 최종 처리에서는 반복, 카운팅, 평균, 총합 등의 집계 처리 수행
-		* [StreamEx]()
+		* [StreamEx3](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/hash/hash3_%EC%9C%84%EC%9E%A5/StreamEx3.java)
 * 내일 계속..
