@@ -1,9 +1,9 @@
-package highscorekit.hash.hash3_위장;
+package stream._1특징;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class StreamEx3 {
+public class StreamEx4 {
 
 	public static void main(String[] args) {
 		

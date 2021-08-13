@@ -1,4 +1,4 @@
-package highscorekit.hash.hash3_위장;
+package stream._1특징;
 
 import java.util.List;
 import java.util.stream.Stream;

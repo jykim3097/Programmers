@@ -1,12 +1,11 @@
 # Hash 3 - [위장](https://programmers.co.kr/learn/courses/30/lessons/42578)
 
-## Solution
-
-### 문제 설명
+## 문제 설명
 * 스파이가 매일 다른 옷을 조합해 옷을 입는 방법을 구하여라
 * 스파이는 한 개 이상의 옷을 입는다
 
-### 내 풀이 - Solution1
+## Solution 1 - 내 풀이
+
 1. 이중배열의 두번째 행 값을 key 값으로 해 같은 key일 때 갯수를 세어 value 값을 넣는다
 	* 이 때 key가 첫번째 값을 저장하기 위해 [Hash1](https://github.com/jykim3097/Programmers/tree/main/src/highscorekit/hash/hash1_%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80%EB%AA%BB%ED%95%9C%EC%84%A0%EC%88%98)에서 알게 된 getOrDefault 함수를 사용해서 값을 저장했다.
 	* 여기까지가 그냥 준비과정이라는 것을...^^
@@ -21,29 +20,8 @@
 5. 포인트는 각 옷 별로 +1('안 입는 옷'을 포함)을 해 곱하고 그 값에 -1(아무것도 안 입는 경우)을 하는 것
 	* 수학적 지식을 이렇게 활용하다니 적재적소에 적당한 개념을 활용해야한다는 것을 체감했다
 
-### 또 다른 풀이 - Solution2
+## Solution2 - Stream을 사용한 코드
 * https://programmers.co.kr/learn/courses/30/lessons/42578/solution_groups?language=java
 * 스트림으로 한 줄에 끝내버리는 코드..,, respect,, 😲😱
 
-#### Stream
-* 출처 : 이것이 자바다, 한빛미디어
-* 배열을 포함한 컬렉션의 저장 요소를 하나씩 참조해서 람다식으로 처리할 수 있도록 해주는 반복자
-	* 람다식 : 함수적 스타일
-	* [StreamEx1](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/hash/hash3_%EC%9C%84%EC%9E%A5/StreamEx1.java)
-* Stream의 foreach
-	* **Consumer 함수적 인터페이스** 타입의 매개값을 가진다
-	* 매개 값은 있지만 리턴 은 없다
-* 특징
-	* 람다식으로 요소를 처리한다
-		* [StreamEx2](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/hash/hash3_%EC%9C%84%EC%9E%A5/StreamEx2.java)
-	* 내부 반복자를 사용해 *병렬 처리*가 쉽다
-		* 외부 반복자 : index를 이용하는 for문이나 Iterator를 이용하는 while문
-		* 내부 반복자 : 컬렉션 내부에서 요소를 반복시키고, 개발자는 처리해야할 코드만 제공하는 코드 패턴
-		* 순차적인 외부 반복자보다 요소들을 병렬 작업하게 하는 내부 반복자가 효율적이다
-		* "여러 개의 스레드가 요소들을 부분적으로 합하고 이 부분 합을 최종 결합해서 전체 합을 생성한다"
-			* 이 문제의 핵심..!
-	* 중간, 최종 처리 작업을 수행한다
-		* 중간 처리에서는 매핑, 필터링, 정렬 수행
-		* 최종 처리에서는 반복, 카운팅, 평균, 총합 등의 집계 처리 수행
-		* [StreamEx3](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/hash/hash3_%EC%9C%84%EC%9E%A5/StreamEx3.java)
-* 내일 계속..
+### [Stream 공부]()
