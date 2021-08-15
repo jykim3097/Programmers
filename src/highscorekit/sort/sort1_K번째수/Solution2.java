@@ -2,29 +2,24 @@ package highscorekit.sort.sort1_K번째수;
 
 import java.util.Arrays;
 
-public class Solution1 {
+public class Solution2 {
 
 	public static int[] solution(int[] array, int[][] commands) {
 
 		int[] answer = new int[commands.length];
         
-		for(int j=0; j < commands.length; j++) {
+		for(int i=0; i < commands.length; i++) {
 
-			int len = commands[j][1] - commands[j][0] + 1;
-			int[] newArr = new int[len];
-			
-			for(int i=0; i<len; i++) newArr[i] = array[i+commands[j][0] - 1];
-			
+			int[] newArr = Arrays.copyOfRange(array, commands[i][0] - 1, commands[i][1]);
 			Arrays.sort(newArr);
 			
-			answer[j] = newArr[commands[j][2]-1];
+			answer[i] = newArr[commands[i][2]-1];
 		}
 		
         return answer;
     }
 	
 	public static void main(String[] args) {
-		
 		int[] array = {1,5,2,6,3,7,4};
 		int[][] commands = {{2,5,3},{4,4,1},{1,7,3}};
 
