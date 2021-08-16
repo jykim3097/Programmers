@@ -16,40 +16,70 @@ public class Solution {
 		Arrays.sort(strNum, Collections.reverseOrder());
 		System.out.println(Arrays.toString(strNum));
 		
-		int c=0;
-		int tmp=0;
+		int indexTmp=0; 
+		int diff=0;
+		
 		for(int i=0; i<strNum.length-1; i++) {
 			if(!strNum[i].substring(0,1).equals(strNum[i+1].substring(0, 1))) {
 				
-				tmp = i;
-				System.out.println(i);
+				diff = i-indexTmp;
+				indexTmp = i;
 				
-				if(i==0 || i==1) {
-					for(int j=i; j>=c; j--) {
-						answer += strNum[j];
-					}
-				} else {
-					for(int j=i; j>c; j--) {
-						answer += strNum[j];
-					}
-				}
-		
-				c++;
+				if(indexTmp  == 0) answer +=strNum[i];
+				
+				answer = addStr(answer, strNum, diff, indexTmp);	
 			}
 		}
 		
-		for(int i=strNum.length-1; i>tmp; i--) {
-			answer += strNum[i];
+		
+		
+		for(int i=strNum.length-1; i>indexTmp; i--) {
+			
+			System.out.println(indexTmp);
+			diff = i-indexTmp;
+			indexTmp = i;
+			
+			if(diff == 1) answer += strNum[i];
+			else answer = addStr(answer, strNum, diff, indexTmp);
+			
 		}
 		
         return answer;
+    }
+    
+    public static String addStr(String answer, String[] strNum, int diff, int indexTmp) {
+		
+		String tmp = "";
+		for(int j = indexTmp; j > indexTmp-diff; j--) {
+			
+			if (j == indexTmp) {
+				tmp = strNum[j];
+				continue;
+			}
+			
+			if(Integer.parseInt(tmp) < 10) {
+				
+				if(Integer.parseInt(strNum[j].substring(1, 2)) <= Integer.parseInt(tmp)) tmp += strNum[j];
+				else tmp = strNum[j] + tmp;
+				
+			} else {
+				if(Integer.parseInt(strNum[j].substring(1, 2)) <= Integer.parseInt(tmp.substring(1, 2))) tmp += strNum[j];
+				else tmp = strNum[j] + tmp;
+			}
+			
+		}
+		answer += tmp;
+		System.out.println(tmp);
+		tmp = "";
+		
+		return answer;
     }
 	
 	
 	public static void main(String[] args) {
 
-		int[] numbers = {3,30,34,5,9};
+		int[] numbers = {383,38};
 		
-		System.out.println(solution(numbers));
+		System.out.println("answer = " + solution(numbers));
 	}
 }

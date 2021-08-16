@@ -9,11 +9,11 @@ public class Solution1 {
 		int[] answer = new int[commands.length];
         
 		for(int j=0; j < commands.length; j++) {
-
+						
 			int len = commands[j][1] - commands[j][0] + 1;
 			int[] newArr = new int[len];
 			
-			for(int i=0; i<len; i++) newArr[i] = array[i+commands[j][0] - 1];
+			for(int i=0; i<len; i++) newArr[i] = array[i+commands[j][0] -1];
 			
 			Arrays.sort(newArr);
 			
