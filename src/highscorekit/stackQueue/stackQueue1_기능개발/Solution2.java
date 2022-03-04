@@ -33,19 +33,19 @@ public class Solution2 {
     }
 	
 	public static Queue<Integer> que(int n, int m) {
-		if(n > m) {
+		if(n >= m) {
 			cnt++;
 		}else {
 			result.add(cnt);
 			n = m;
-			cnt=1;
+			cnt = 1;
 		}
 		m = queue.poll();
 		
 		if(queue.size() != 0) {
 			que(n, m);
-		}else {
-			if(n > m) {
+		} else {
+			if(n >= m) {
 				cnt++;
 			}else {
 				result.add(cnt);
@@ -57,17 +57,11 @@ public class Solution2 {
 	}
 	
 	public static void main(String[] args) {
-		
-//		int[] progresses = {93,92,73,78,53};
-//		int[] speeds = {1,4,7,5,3};
-		
-		int[] progresses = {95,90,99,99,80,99};
-		int[] speeds = {1,1,1,1,1,1};
 
-//		int[] progresses = {93,30,55};
-//		int[] speeds = {1,30,5};
-		
+		// 아래 케이스에서 n,m이 같은 값일 때를 못 걸러주는 값을 발견했다
+		int[] progresses = {98,99,98,99};
+		int[] speeds = {1,1,1,1};
+
 		solution(progresses, speeds);
-//		System.out.println(Arrays.toString(solution(progresses, speeds)));
 	}
 }
