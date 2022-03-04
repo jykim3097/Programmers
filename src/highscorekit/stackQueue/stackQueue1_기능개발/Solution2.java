@@ -1,49 +1,73 @@
 package highscorekit.stackQueue.stackQueue1_기능개발;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Solution2 {
 
+	static Queue<Integer> result = new LinkedList<>();
+	static Queue<Integer> queue = new LinkedList<>();
+	static int cnt = 1;
+	
 	public static int[] solution(int[] progresses, int[] speeds) {
-        int[] answer = {};
-        
-        Queue<Integer> queue = new LinkedList<>();
-        
-        for(int i=0; i<progresses.length; i++) {
+		for(int i=0; i<progresses.length; i++) {
         	double tmp = (100 - progresses[i]) / (double)speeds[i];
         	queue.add((int)Math.ceil(tmp));
-        	
         }
+		System.out.println(queue);
+
+        int n = queue.poll();
+        int m = queue.poll();
+        Queue<Integer> res = que(n,m);
+        int[] answer = new int[res.size()];
         
-        System.out.println(queue);
-        
-        int num = queue.poll();
-        
-        
-        Iterator<Integer> iter = queue.iterator();
-        int cnt = 1;
+        int i = 0;
+        Iterator<Integer> iter = res.iterator();
         while(iter.hasNext()) {
-        	if(iter.next() < num) {
-        		cnt++;
-//        		queue.poll();
-        	} else {
-        		System.out.println(cnt);
-        		cnt=0;
-        	}
+        	answer[i] = iter.next();
+        	i++;
         }
-        
         
         return answer;
     }
 	
+	public static Queue<Integer> que(int n, int m) {
+		if(n > m) {
+			cnt++;
+		}else {
+			result.add(cnt);
+			n = m;
+			cnt=1;
+		}
+		m = queue.poll();
+		
+		if(queue.size() != 0) {
+			que(n, m);
+		}else {
+			if(n > m) {
+				cnt++;
+			}else {
+				result.add(cnt);
+				cnt = 1;
+			}
+			result.add(cnt);
+		}
+		return result;
+	}
+	
 	public static void main(String[] args) {
 		
-		int[] progresses = {93,92,73,78,53};
-		int[] speeds = {1,4,7,5,3};
+//		int[] progresses = {93,92,73,78,53};
+//		int[] speeds = {1,4,7,5,3};
 		
-		System.out.println(Arrays.toString(solution(progresses, speeds)));
+		int[] progresses = {95,90,99,99,80,99};
+		int[] speeds = {1,1,1,1,1,1};
+
+//		int[] progresses = {93,30,55};
+//		int[] speeds = {1,30,5};
+		
+		solution(progresses, speeds);
+//		System.out.println(Arrays.toString(solution(progresses, speeds)));
 	}
 }
