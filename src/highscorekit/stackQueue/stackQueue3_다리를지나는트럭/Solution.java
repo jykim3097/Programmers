@@ -6,37 +6,62 @@ import java.util.Queue;
 
 public class Solution {
 
-public static int solution(int bridge_length, int weight, int[] truck_weights) {
+	public static int solution(int bridge_length, int weight, int[] truck_weights) {
 		
 		int answer = 0;
 		
 		Queue<Integer> queue = new LinkedList<>();
+		Queue<Integer> cross = new LinkedList<>();
+		
 		for(int i=0; i<truck_weights.length; i++) {
 			queue.add(truck_weights[i]);
+		}System.out.println(queue);
+		
+		int time = 0;
+		int sum = 0;
+		while(!queue.isEmpty()) {
+			time++;
+			
+			if(cross.size() == bridge_length) {
+				sum -= cross.peek();
+				cross.poll();
+			}
+			
+			int n = queue.peek();
+			sum += n;
+			
+			if(sum > weight) {
+				if(cross.size() != bridge_length) {
+					time++;
+					sum -= cross.peek();
+					//2칸째인경우
+					cross.poll();
+					//아닌경우
+					
+					sum -= n;
+				}
+			} else {
+				cross.add(n);
+				queue.poll();
+			}
+			
+			System.out.println(time+"s: "+cross);
 		}
 		
-		int res = queue.size() + bridge_length;
-		
-		int num = queue.poll();
-		Iterator<Integer> iter = queue.iterator();
-        while(iter.hasNext()) {
-        	int n = iter.next();
-        	num += n;
-        	if(num > weight) {
-        		res++;
-        	}
-        	num = n;
-        }
-        
-		answer = res;
+		answer = time + bridge_length;
+		System.out.println(answer);
 		
 		return answer;
 	}
 	
 	public static void main(String[] args) {
-		int bridge_length = 2;
-		int weight = 10;
-		int[] truck_weights = {7,4,5,6};
+//		int bridge_length = 2;
+//		int weight = 10;
+//		int[] truck_weights = {7,4,5,6};
+		
+		int bridge_length = 3;
+		int weight = 15;
+		int[] truck_weights = {9, 4, 1, 7, 9};
 		
 //		int bridge_length = 100;
 //		int weight = 100;
