@@ -3,6 +3,7 @@ package highscorekit.stackQueue.stackQueue3_다리를지나는트럭;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Solution {
 
@@ -12,45 +13,47 @@ public class Solution {
 		
 		Queue<Integer> queue = new LinkedList<>();
 		Queue<Integer> cross = new LinkedList<>();
+		//Stack<Integer> time = new Stack<Integer>();
 		
 		for(int i=0; i<truck_weights.length; i++) {
 			queue.add(truck_weights[i]);
 		}System.out.println(queue);
 		
-		int time = 0;
+		int t = 0;
 		int sum = 0;
-		while(!queue.isEmpty()) {
-			time++;
+		int n = 0;
+		
+		cross.add(0);
+		while(!cross.isEmpty()) {
+			t++;
 			
 			if(cross.size() == bridge_length) {
 				sum -= cross.peek();
 				cross.poll();
 			}
 			
-			int n = queue.peek();
-			sum += n;
+			if(!queue.isEmpty()) {
+				n = queue.peek();
+				sum += n;
+			} else {
+				cross.poll();
+				continue;
+			}
 			
 			if(sum > weight) {
 				if(cross.size() != bridge_length) {
-					time++;
-					sum -= cross.peek();
-					//2칸째인경우
-					cross.poll();
-					//아닌경우
-					
+					t++;
+					cross.add(0);
 					sum -= n;
 				}
-			} else {
+			} else if(!queue.isEmpty()) {
 				cross.add(n);
 				queue.poll();
-			}
-			
-			System.out.println(time+"s: "+cross);
+			} 
+			System.out.println(t+"s: "+cross);
 		}
-		
-		answer = time + bridge_length;
-		System.out.println(answer);
-		
+		answer = t - 1;
+		System.out.println("answer: "+answer);		
 		return answer;
 	}
 	
@@ -59,13 +62,13 @@ public class Solution {
 //		int weight = 10;
 //		int[] truck_weights = {7,4,5,6};
 		
-		int bridge_length = 3;
-		int weight = 15;
-		int[] truck_weights = {9, 4, 1, 7, 9};
+//		int bridge_length = 3;
+//		int weight = 15;
+//		int[] truck_weights = {9, 4, 1, 7, 9};
 		
-//		int bridge_length = 100;
-//		int weight = 100;
-//		int[] truck_weights = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
+		int bridge_length = 100;
+		int weight = 100;
+		int[] truck_weights = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
 		
 //		int bridge_length = 100;
 //		int weight = 100;
