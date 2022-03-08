@@ -21,49 +21,42 @@ public class Solution {
 		int n = 0;
 		cross.add(0);
 		
-		while(!cross.isEmpty()) {
+		while(!cross.isEmpty() || !queue.isEmpty()) {
 			time++;
 			
-			if(cross.size() == bridge_length) {
+			if(cross.size() == bridge_length || queue.isEmpty()) {
 				sum -= cross.peek();
 				cross.poll();
-			}
-			
-			if(queue.isEmpty() && cross.size() != bridge_length) {
-				cross.add(0);
 			}
 			
 			if(!queue.isEmpty()) {				
 				n = queue.peek();
 				sum += n;
-			} else {
-				n = 0;
-				sum += n;
+
+				if(sum > weight) {
+					// 합계가 큰 경우
+					sum -= n;
+					cross.add(0);
+				} else {
+					cross.add(n);
+					queue.poll();
+				}
 			}
 			
-			if(sum > weight) {
-				sum -= queue.peek();
-				cross.add(0);
-			} else {
-				cross.add(n);
-				queue.poll();
-			}
-			
-			System.out.println(time);
 		}
-		
+		answer = time;
 		System.out.println("answer: "+answer);		
 		return answer;
 	}
 	
 	public static void main(String[] args) {
-		int bridge_length = 2;
-		int weight = 10;
-		int[] truck_weights = {7,4,5,6};
+//		int bridge_length = 2;
+//		int weight = 10;
+//		int[] truck_weights = {7,4,5,6};
 		
-//		int bridge_length = 3;
-//		int weight = 15;
-//		int[] truck_weights = {9, 4, 1, 7, 9};
+		int bridge_length = 3;
+		int weight = 15;
+		int[] truck_weights = {9, 4, 1, 7, 9};
 		
 //		int bridge_length = 100;
 //		int weight = 100;
