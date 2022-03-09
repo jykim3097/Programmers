@@ -1,5 +1,6 @@
 package highscorekit.stackQueue.stackQueue3_다리를지나는트럭;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -14,27 +15,30 @@ public class Solution {
 		
 		for(int i=0; i<truck_weights.length; i++) {
 			queue.add(truck_weights[i]);
-		}System.out.println(queue);
+		}
 
 		int time = 0;
 		int sum = 0;
 		int n = 0;
-		cross.add(0);
-		
+
+		// 다리 길이가 트럭 개수보다 긴 경우 - 예외처리 필요함
+
+		//  다리에 트럭이 있는 경우 || 대기 트럭이 있는 경우
 		while(!cross.isEmpty() || !queue.isEmpty()) {
 			time++;
 			
+			// 다리에 트럭이 가득 찬 경우  || 대기 트럭이 빈 경우
 			if(cross.size() == bridge_length || queue.isEmpty()) {
 				sum -= cross.peek();
 				cross.poll();
 			}
 			
-			if(!queue.isEmpty()) {				
+			// 대기 트럭이 있는 경우
+			if(!queue.isEmpty()) {
 				n = queue.peek();
 				sum += n;
 
 				if(sum > weight) {
-					// 합계가 큰 경우
 					sum -= n;
 					cross.add(0);
 				} else {
@@ -42,12 +46,12 @@ public class Solution {
 					queue.poll();
 				}
 			}
-			
 		}
-		answer = time;
-		System.out.println("answer: "+answer);		
+		
+		answer = time;	
 		return answer;
 	}
+
 	
 	public static void main(String[] args) {
 //		int bridge_length = 2;
