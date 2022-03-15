@@ -1,4 +1,4 @@
-# 스택/큐 2 - [다리를 지나는 트럭](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/stackQueue/stackQueue3_%EB%8B%A4%EB%A6%AC%EB%A5%BC%EC%A7%80%EB%82%98%EB%8A%94%ED%8A%B8%EB%9F%AD/Solution.java)
+# 스택/큐 3 - [다리를 지나는 트럭](https://github.com/jykim3097/Programmers/blob/main/src/highscorekit/stackQueue/stackQueue3_%EB%8B%A4%EB%A6%AC%EB%A5%BC%EC%A7%80%EB%82%98%EB%8A%94%ED%8A%B8%EB%9F%AD/Solution.java)
 
 ## 문제 설명
 * 일차선 다리를 트럭 여러 대가 정해진 순으로 건널 때 걸리는 최소 시간 구하기
